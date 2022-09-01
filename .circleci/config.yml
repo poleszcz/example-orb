@@ -8,7 +8,7 @@ filters: &filters
     only: /.*/
 
 workflows:
-  lint-pack:
+  verify-and-publish:
     jobs:
       - orb-tools/lint:
           filters: *filters
@@ -26,7 +26,7 @@ workflows:
             - orb-tools/pack
             - orb-tools/lint
             - orb-tools/review
-            - orb-tools/check
+            - shellcheck/check
           context: orb-publishing
           filters:
             branches:
